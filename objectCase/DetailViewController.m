@@ -11,18 +11,17 @@
 #import <AVKit/AVKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <DropboxSDK/DropboxSDK.h>
-
+#import "AVTableViewController.h"
 
 
 @interface DetailViewController ()
 {
     BOOL isOpen;
-    
+    AVPlayerLayer * playerLayer;
     //id timeObsever;
 }
 @property (nonatomic,strong) AVPlayer *player;
 @property (weak, nonatomic) IBOutlet UIButton *playOPauseBtnPressed;
-@property (weak, nonatomic) IBOutlet UIProgressView *progress;
 @property (weak, nonatomic) IBOutlet UISlider *AVSlider;
 
 
@@ -36,7 +35,9 @@
     
 }
 -(void)dealloc{
-   
+    //remove聆聽
+    [self removeObserverFromPlayerItem:self.player.currentItem];
+    [self removeNotification];
     
 }
 
@@ -49,10 +50,16 @@
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self removeObserverFromPlayerItem:self.player.currentItem];
-    //    [self addProgressObserver];
-   // [self removeNotification];
-    //[self.player removeTimeObserver:timeObsever];
+
+    //離開頁面砍掉layer且暫停
+    if (_player != nil) {
+        _player.rate = 0.0;
+        [playerLayer removeFromSuperlayer];
+        _player = nil;
+        playerLayer = nil;
+    }
+    //重整tableview
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updataTableView" object:nil];
    
 }
 
@@ -64,20 +71,20 @@
 #pragma mark - 私有方法
 -(void)setupUI{
     //播放器Layer
-    AVPlayerLayer *playerLayer=[AVPlayerLayer playerLayerWithPlayer:self.player];
+    playerLayer=[AVPlayerLayer playerLayerWithPlayer:self.player];
     playerLayer.frame=self.AVMovieImage.frame;
     [self.AVMovieImage.layer addSublayer:playerLayer];
 }
 -(AVPlayer *)player{
     if (!_player) {
-        AVPlayerItem *playerItem=[self getPlayItem:0];
+        AVPlayerItem *playerItem=[self getPlayItem];
         _player=[AVPlayer playerWithPlayerItem:playerItem];
         [self addProgressObserver];
         [self addObserverToPlayerItem:playerItem];
     }
     return _player;
 }
--(AVPlayerItem *)getPlayItem:(int)videoIndex{
+-(AVPlayerItem *)getPlayItem{
    
     NSURL *url=[NSURL URLWithString:self.test];
     AVPlayerItem *playerItem=[AVPlayerItem playerItemWithURL:url];
@@ -97,22 +104,44 @@
 
 //播放玩通知
 -(void)playbackFinished:(NSNotification *)notification{
+    UIAlertController * alertcontroller=[UIAlertController alertControllerWithTitle:@"播放完畢" message:@""preferredStyle:UIAlertControllerStyleAlert];
+    //準備按鈕
+    UIAlertAction*finish=[UIAlertAction actionWithTitle:@"結束" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        _AVSlider.value = 0;
+        [_player seekToTime:CMTimeMake(0, 1)];
+        
+        
+    }];
+    UIAlertAction*reply=[UIAlertAction actionWithTitle:@"重複播放" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        _AVSlider.value = 0;
+        [_player seekToTime:CMTimeMake(0, 1)];
+        [_player play];
+       
+    }];
+    //將按鈕加到提示視窗
+    [alertcontroller addAction:finish];
+    [alertcontroller addAction:reply];
     
+    
+    [self presentViewController:alertcontroller animated:YES completion:nil];
+    
+  
+
 }
 
 #pragma mark - 監控
 
 -(void)addProgressObserver{
+    
     AVPlayerItem *playerItem=self.player.currentItem;
-    UIProgressView *progress=self.progress;
+
     UISlider * slider = self.AVSlider;
     //每秒執行一次   可用 id timeObsever = 去接 在removeTimeObserve
-   [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+   [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 20) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         float current=CMTimeGetSeconds(time);
         float total=CMTimeGetSeconds([playerItem duration]);
-        NSLog(@"已經播放%.2fs.",current);
+       // NSLog(@"已經播放%.2fs.",current);
         if (current) {
-            [progress setProgress:(current/total) animated:YES];
            //self.AVSlider.value = current/total;
            [slider setValue:(current/total) animated:YES];
         }
@@ -122,14 +151,16 @@
 
 #pragma mark - slider
 - (IBAction)AVSliderBt:(id)sender {
-    
+    [_player pause];
     AVPlayerItem *playerItem=_player.currentItem;
     //從這裡開始播放
     CGFloat current = self.AVSlider.value;
     //獲取總時長
     float total = CMTimeGetSeconds([playerItem duration]);
     //進行播放
-    [_player seekToTime:CMTimeMake(total * current,1)];
+    //[_player seekToTime:CMTimeMake(current * total,1)];
+    //獲取進度 and刻度
+    [_player seekToTime:CMTimeMake(current*total, 1) toleranceBefore:CMTimeMake(1, 100) toleranceAfter:CMTimeMake(1, 100)];
     //播放
     [_player play];
 
@@ -175,25 +206,43 @@
     }else if(self.player.rate==1){//正在播放 就暫停
         [self.player pause];
     }
+
+
 }
 
 #pragma mark - Delete movie
 - (IBAction)deleteBtnPressed:(id)sender {
+    [self.player pause];
     //取得plist檔案路徑
-    //停止影片
-    if (_player != nil) {
-        _player.rate = 0.0;
-        _player = nil;
-    }
-    //刪除陣列中路徑
-    [self.detailArray removeObject:self.test];
-
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL * url = [NSURL URLWithString:self.test];
-    [fileManager removeItemAtURL:url error:nil];
+    UIAlertController * alertcontroller=[UIAlertController alertControllerWithTitle:@"確認要刪除影片？" message:@""preferredStyle:UIAlertControllerStyleAlert];
+    //準備按鈕
+    UIAlertAction * determine = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (_player != nil) {
+            _player.rate = 0.0;
+            [playerLayer removeFromSuperlayer];
+            _player = nil;
+            playerLayer = nil;
+        }
+        //刪除陣列中路徑
+        [self.detailArray removeObject:self.test];
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSURL * url = [NSURL URLWithString:self.test];
+        [fileManager removeItemAtURL:url error:nil];
+        
+        //跳轉
+    AVTableViewController * tableVC =[self.storyboard instantiateViewControllerWithIdentifier:@"AVTableViewController"];
+         [self.navigationController pushViewController:tableVC animated:YES];
+    }];
+    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [_player play];
+    }];
+    //將按鈕加到提示視窗
+    [alertcontroller addAction:determine];
+    [alertcontroller addAction:cancel];
     
-      [[NSNotificationCenter defaultCenter] postNotificationName:@"updataTableView" object:nil];
     
+    [self presentViewController:alertcontroller animated:YES completion:nil];
 }
 
 #pragma mark - save
@@ -201,70 +250,81 @@
     NSURL * movieURL = [NSURL URLWithString:self.test];
     ALAssetsLibrary * library = [ALAssetsLibrary new];
     [library writeVideoAtPathToSavedPhotosAlbum:movieURL completionBlock:nil];
+    UIAlertController * alertcontroller=[UIAlertController alertControllerWithTitle:@"儲存完畢" message:@""preferredStyle:UIAlertControllerStyleAlert];
+    //準備按鈕
+    UIAlertAction*understand=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    //將按鈕加到提示視窗
+    [alertcontroller addAction:understand];
+    
+    
+    [self presentViewController:alertcontroller animated:YES completion:nil];
+    
 }
 
 #pragma mark - share
 - (IBAction)shareToFBBtnPressed:(id)sender
-{NSURL * url = [NSURL URLWithString:self.test];
-    NSString * path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-    NSString * name = [NSString stringWithFormat:@"file://"];
-    NSString * name2 = [name stringByAppendingString:path];
-    NSString * filename = [NSString stringWithFormat:@"/123.mp4"];
-    NSString * finallyname = [name2 stringByAppendingString:filename];
-    NSURL * outputURL =[NSURL URLWithString:finallyname];
-    
-    NSLog(@"outputURL:  %@ ", outputURL);
-    
-    
-    [self lowQuailtyWithInputURL:url outputURL:outputURL blockHandler:nil];
-}
-- (void) lowQuailtyWithInputURL:(NSURL*)inputURL
-                      outputURL:(NSURL*)outputURL
-                   blockHandler:(void (^)(AVAssetExportSession*))handler
 {
-    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:inputURL options:nil];
-    AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:asset     presetName:AVAssetExportPresetLowQuality];
-    session.outputURL = outputURL;
-    session.outputFileType = AVFileTypeMPEG4;
-    session.shouldOptimizeForNetworkUse = YES;
-    [session exportAsynchronouslyWithCompletionHandler:^(void)
-     {
-         //handler(session);
-         switch (session.status) {
-                 
-             case AVAssetExportSessionStatusUnknown:
-                 
-                 NSLog(@"AVAssetExportSessionStatusUnknown");
-                 
-                 break;
-                 
-             case AVAssetExportSessionStatusWaiting:
-                 
-                 NSLog(@"AVAssetExportSessionStatusWaiting");
-                 
-                 break;
-                 
-             case AVAssetExportSessionStatusExporting:
-                 
-                 NSLog(@"AVAssetExportSessionStatusExporting");
-                 
-                 break;
-                 
-             case AVAssetExportSessionStatusCompleted:
-                 
-                 NSLog(@"AVAssetExportSessionStatusCompleted");
-                 
-                 break;
-                 
-             case AVAssetExportSessionStatusFailed:
-                 
-                 NSLog(@"AVAssetExportSessionStatusFailed");
-                 
-                 break;
-       
-         }
-     }];
+    //壓縮
+//    NSURL * url = [NSURL URLWithString:self.test];
+//    NSString * path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+//    NSString * name = [NSString stringWithFormat:@"file://"];
+//    NSString * name2 = [name stringByAppendingString:path];
+//    NSString * filename = [NSString stringWithFormat:@"/123.mp4"];
+//    NSString * finallyname = [name2 stringByAppendingString:filename];
+//    NSURL * outputURL =[NSURL URLWithString:finallyname];
+//    
+//    NSLog(@"outputURL:  %@ ", outputURL);
+//    
+//    
+//    [self lowQuailtyWithInputURL:url outputURL:outputURL blockHandler:nil];
 }
+//- (void) lowQuailtyWithInputURL:(NSURL*)inputURL
+//                      outputURL:(NSURL*)outputURL
+//                   blockHandler:(void (^)(AVAssetExportSession*))handler
+//{
+//    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:inputURL options:nil];
+//    AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:asset     presetName:AVAssetExportPresetLowQuality];
+//    session.outputURL = outputURL;
+//    session.outputFileType = AVFileTypeMPEG4;
+//    session.shouldOptimizeForNetworkUse = YES;
+//    [session exportAsynchronouslyWithCompletionHandler:^(void)
+//     {
+//         //handler(session);
+//         switch (session.status) {
+//                 
+//             case AVAssetExportSessionStatusUnknown:
+//                 
+//                 NSLog(@"AVAssetExportSessionStatusUnknown");
+//                 
+//                 break;
+//                 
+//             case AVAssetExportSessionStatusWaiting:
+//                 
+//                 NSLog(@"AVAssetExportSessionStatusWaiting");
+//                 
+//                 break;
+//                 
+//             case AVAssetExportSessionStatusExporting:
+//                 
+//                 NSLog(@"AVAssetExportSessionStatusExporting");
+//                 
+//                 break;
+//                 
+//             case AVAssetExportSessionStatusCompleted:
+//                 
+//                 NSLog(@"AVAssetExportSessionStatusCompleted");
+//                 
+//                 break;
+//                 
+//             case AVAssetExportSessionStatusFailed:
+//                 
+//                 NSLog(@"AVAssetExportSessionStatusFailed");
+//                 
+//                 break;
+//       
+//         }
+//     }];
+//}
 
 
 #pragma mark - Upload DropBox
@@ -280,16 +340,14 @@
     if (![[DBSession sharedSession]isLinked]) {
         [[DBSession sharedSession]linkFromController:self];
     }
-    NSString *fileName=[NSString stringWithFormat:@"%@.png",[[NSDate date] description]];
+    NSString *fileName=[NSString stringWithFormat:@"%@.mp4",[[NSDate date] description]];
     
-    NSString *localFilePath = [[NSBundle mainBundle] pathForResource:@"job.png" ofType:nil];
-//    NSLog(@"%@",localFilePath);
     NSString *targetPath=@"/";
     
-    [restClient uploadFile:fileName
+    [[self restClient] uploadFile:fileName
                     toPath:targetPath
              withParentRev:nil
-                  fromPath:localFilePath];
+                  fromPath:self.path];
 }
 //上傳成功
 -(void)restClient:(DBRestClient*)client uploadedFile:(NSString*)destPath

@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *backUpBtnpressed;
 @property(nonatomic,strong)NSString * test;
 @property(nonatomic,strong)NSMutableArray * detailArray;
+@property(nonatomic,strong)NSString * path;
 -(DBRestClient *)restClient;
 @end
