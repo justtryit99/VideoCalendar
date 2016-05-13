@@ -23,6 +23,7 @@
 @property (nonatomic,strong) AVPlayer *player;
 @property (weak, nonatomic) IBOutlet UIButton *playOPauseBtnPressed;
 @property (weak, nonatomic) IBOutlet UISlider *AVSlider;
+@property (weak, nonatomic) IBOutlet UIImageView *playImageView;
 
 
 
@@ -32,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.playImageView.hidden = true;
     
 }
 -(void)dealloc{
@@ -104,27 +106,11 @@
 
 //播放玩通知
 -(void)playbackFinished:(NSNotification *)notification{
-    UIAlertController * alertcontroller=[UIAlertController alertControllerWithTitle:@"播放完畢" message:@""preferredStyle:UIAlertControllerStyleAlert];
-    //準備按鈕
-    UIAlertAction*finish=[UIAlertAction actionWithTitle:@"結束" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+   
         _AVSlider.value = 0;
         [_player seekToTime:CMTimeMake(0, 1)];
-        
-        
-    }];
-    UIAlertAction*reply=[UIAlertAction actionWithTitle:@"重複播放" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        _AVSlider.value = 0;
-        [_player seekToTime:CMTimeMake(0, 1)];
-        [_player play];
-       
-    }];
-    //將按鈕加到提示視窗
-    [alertcontroller addAction:finish];
-    [alertcontroller addAction:reply];
-    
-    
-    [self presentViewController:alertcontroller animated:YES completion:nil];
-    
+        [_player pause];
+    self.playImageView.hidden = false;
   
 
 }
@@ -203,9 +189,12 @@
    
     if(self.player.rate==0){ //如果是暫停 就播放
         [self.player play];
+        self.playImageView.hidden = true;
     }else if(self.player.rate==1){//正在播放 就暫停
         [self.player pause];
+        self.playImageView.hidden = false;
     }
+    
 
 
 }

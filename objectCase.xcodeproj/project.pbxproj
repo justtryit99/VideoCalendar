@@ -51,6 +51,7 @@
 		E6DFA5EFDB06D492C8C72825 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D124FD1C54A190BCA81FF78 /* libPods.a */; };
 		EB5E3B811CD1EE7600C5DA4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5E3B801CD1EE7600C5DA4D /* Main.storyboard */; };
 		EB5E3B831CD26F1100C5DA4D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB5E3B821CD26F1100C5DA4D /* AssetsLibrary.framework */; };
+		EB78AD9C1CE5DFD7000DBA2A /* playorpause.png in Resources */ = {isa = PBXBuildFile; fileRef = EB78AD9B1CE5DFD7000DBA2A /* playorpause.png */; };
 		EB7D51971CB39985003B3BBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7D51961CB39985003B3BBB /* main.m */; };
 		EB7D519A1CB39985003B3BBB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7D51991CB39985003B3BBB /* AppDelegate.m */; };
 		EB7D519D1CB39985003B3BBB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7D519C1CB39985003B3BBB /* ViewController.m */; };
@@ -134,6 +135,7 @@
 		667EABB150DDD23C2D575A6A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EB5E3B801CD1EE7600C5DA4D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EB5E3B821CD26F1100C5DA4D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		EB78AD9B1CE5DFD7000DBA2A /* playorpause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playorpause.png; sourceTree = "<group>"; };
 		EB7D51921CB39985003B3BBB /* objectCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = objectCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB7D51961CB39985003B3BBB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EB7D51981CB39985003B3BBB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				EBAAB8FE1CC7E7270006B7B1 /* AVtableViewCell.m */,
 				EBAAB90E1CC8655A0006B7B1 /* AVTableViewController.h */,
 				EBAAB90F1CC8655A0006B7B1 /* AVTableViewController.m */,
+				EB78AD9B1CE5DFD7000DBA2A /* playorpause.png */,
 				EB7D519B1CB39985003B3BBB /* ViewController.h */,
 				EB7D519C1CB39985003B3BBB /* ViewController.m */,
 				EB5E3B801CD1EE7600C5DA4D /* Main.storyboard */,
@@ -422,6 +425,7 @@
 				3C69424B1CE5AF2C008DF05A /* say.png in Resources */,
 				3C04F13A1CE1CD54006374A1 /* image.jpg in Resources */,
 				EB7D51A21CB39985003B3BBB /* Assets.xcassets in Resources */,
+				EB78AD9C1CE5DFD7000DBA2A /* playorpause.png in Resources */,
 				3C04F13B1CE1CD54006374A1 /* photo.png in Resources */,
 				3C04F1401CE1CD54006374A1 /* Jump.storyboard in Resources */,
 				3C6942531CE5B924008DF05A /* setting.png in Resources */,
