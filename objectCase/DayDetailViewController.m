@@ -9,6 +9,7 @@
 #import "DayDetailViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "DaySingletonManager.h"
+#import "ImageBrowser.h"
 
 
 #define kAnimationDuration 0.2
@@ -18,24 +19,17 @@
 {
     DaySingletonManager *daySingleton;
     
+    __weak IBOutlet NSLayoutConstraint *deleteLayout;
 }
 
 @end
 
 @implementation DayDetailViewController
 
--(void)viewWillAppear:(BOOL)animated{
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHidden) name:UIKeyboardDidHideNotification object:nil];
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     //lable的值，等於上一頁segue傳過來的值，這頁有設string，才能傳值
     _bigDateLable.text = _bigDateStr;
     _smallDateLable.text = _smallDateStr;
@@ -67,48 +61,38 @@
         
         _deleteBtn.hidden = false;
         
+        
+
+        
     }
+    
+//        增加imageView觸碰手勢
+    _imageView.userInteractionEnabled = true;
+    UITapGestureRecognizer *tap  = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(magnifyImage)];
+    
+    [_imageView addGestureRecognizer:tap];
     
     NSLog(@"oneDayData: %@",_oneDayData);
     
 //    邊寬與圓角
     _insertImgBtn.layer.borderWidth = 2.0f;
     _insertImgBtn.layer.cornerRadius = 3.0f;
-    _dayDetailTextView.layer.borderWidth = 3.0f;
-    _dayDetailTextView.layer.cornerRadius = 6.0f;
-    _imgTitleTextView.layer.borderWidth = 3.0f;
-    _imgTitleTextView.layer.cornerRadius = 6.0f;
-    _imageView.layer.cornerRadius = 6.0f;
+    _dayDetailTextView.layer.borderWidth = 2.0f;
+    _dayDetailTextView.layer.cornerRadius = 3.0f;
+    _imgTitleTextView.layer.borderWidth = 2.0f;
+    _imgTitleTextView.layer.cornerRadius = 3.0f;
+    _imageView.layer.cornerRadius = 3.0f;
 }
 
--(void)keyboardDidShow:(NSNotification *)notification
+- (void)magnifyImage
 {
-//    //获取键盘高度
-//    NSValue *keyboardObject = [[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey];
-//        CGRect keyboardRect;
-//    [keyboardObject getValue:&keyboardRect];
-//       //调整放置有textView的view的位置
-//        //设置动画
-//    [UIView beginAnimations:nil context:nil];
-//   
-//    //定义动画时间
-//    [UIView setAnimationDuration:kAnimationDuration];
-//    //设置view的frame，往上平移
-//    self.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-//    
-//    
-//    [UIView commitAnimations];
-   
+    if (_imageView.image != nil) {
+        [ImageBrowser showImage:self.imageView];
+    }
+    
 }
 
--(void) keyboardDidHidden {
-    
-//    [UIView beginAnimations:nil context:nil];
-//    [UIView setAnimationDuration:kAnimationDuration];
-//    
-//    [(UIView*) [self.view viewWithTag:1000] setFrame:CGRectMake(0, self.view.frame.size.height-kViewHeight, 320, kViewHeight)];
-//    [UIView commitAnimations];
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -291,8 +275,14 @@
         CGFloat viewY = self.view.frame.origin.y;
         
         self.view.frame = CGRectMake(0, viewY - tvY + 40, self.view.frame.size.width, self.view.frame.size.height);
+        
+//        _deleteBtn.translatesAutoresizingMaskIntoConstraints = false;
+
+        deleteLayout.constant = 50;
+
+        
+        
     }];
-    
     
     
 }
@@ -301,6 +291,9 @@
 {
     [UIView animateWithDuration:0.2 animations:^{
         self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        
+        deleteLayout.constant = 20;
+        
     }];
     
     
@@ -309,6 +302,12 @@
 - (IBAction)detailVCTapped:(id)sender {
     [_imgTitleTextView resignFirstResponder];
     [_dayDetailTextView resignFirstResponder];
+}
+
+-(void)viewDidLayoutSubviews{
+//    CGPoint btnOrigin = _deleteBtn.frame.origin;
+//    
+//    _deleteBtn.frame = CGRectMake(btnOrigin.x, btnOrigin.y - 20, 40, 36);
 }
 
 @end

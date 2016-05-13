@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -22,14 +21,14 @@
                                 <rect key="frame" x="-7" y="-5" width="615" height="615"/>
                                 <color key="backgroundColor" red="0.56633401279999995" green="0.83155769390000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9d-xA-dRw">
-                                <rect key="frame" x="175" y="71" width="250" height="40"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9d-xA-dRw">
+                                <rect key="frame" x="20" y="40" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="Jvv-ME-Jv6"/>
-                                    <constraint firstAttribute="height" constant="40" id="WDG-qh-1to"/>
+                                    <constraint firstAttribute="width" constant="150" id="ZtK-6R-KZH"/>
+                                    <constraint firstAttribute="height" constant="150" id="bPy-0g-yMX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="瀏覽日記" backgroundImage="Rectangle 1">
+                                <state key="normal" backgroundImage="browse.png">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -37,39 +36,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddE-lx-ElV">
-                                <rect key="frame" x="175" y="161" width="250" height="40"/>
+                                <rect key="frame" x="430" y="40" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="EUC-ZO-E6O"/>
-                                    <constraint firstAttribute="width" constant="250" id="RSv-hk-Sgt"/>
+                                    <constraint firstAttribute="width" constant="150" id="NM1-nM-0tV"/>
+                                    <constraint firstAttribute="height" constant="150" id="jZ5-ja-svx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="新增日記" backgroundImage="Rectangle 1">
+                                <state key="normal" backgroundImage="pen.png">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="newDiaryBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4la-JE-QI9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEI-RI-dFj">
-                                <rect key="frame" x="175" y="251" width="250" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="q7b-1G-Ijr"/>
-                                    <constraint firstAttribute="width" constant="250" id="yxc-qd-Ebj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                <state key="normal" title="製作影片" backgroundImage="Rectangle 1">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="JXK-Xb-tbv" kind="show" id="Ysg-O5-qBC"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yhe-un-Wrq">
-                                <rect key="frame" x="175" y="431" width="250" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="CRi-wy-r0v"/>
-                                    <constraint firstAttribute="height" constant="40" id="xpJ-Bg-aBd"/>
-                                </constraints>
+                                <rect key="frame" x="207" y="540" width="187" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="設定" backgroundImage="Rectangle 1">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,11 +60,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06U-xY-ptO">
-                                <rect key="frame" x="175" y="341" width="250" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="1L3-a3-YNx"/>
-                                    <constraint firstAttribute="height" constant="40" id="HDg-mH-QFZ"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="280" width="187" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="我的影片" backgroundImage="Rectangle 1">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -92,24 +69,40 @@
                                     <segue destination="I4R-ys-Axl" kind="show" id="NEP-Xc-E1C"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEI-RI-dFj">
+                                <rect key="frame" x="393" y="280" width="187" height="40"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <state key="normal" title="製作影片" backgroundImage="Rectangle 1">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="JXK-Xb-tbv" kind="show" id="Ysg-O5-qBC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="P9d-xA-dRw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="3NL-CF-HyJ"/>
+                            <constraint firstItem="ddE-lx-ElV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="4cM-8T-qHO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JRS-iK-msS" secondAttribute="trailing" constant="-28" id="8Bg-RN-8zr"/>
-                            <constraint firstItem="06U-xY-ptO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8d5-7d-CXr"/>
+                            <constraint firstItem="ddE-lx-ElV" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="9N9-hH-aCW"/>
+                            <constraint firstItem="Yhe-un-Wrq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="D2j-IG-Uqi"/>
                             <constraint firstItem="JRS-iK-msS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-5" id="Imr-a4-S7j"/>
-                            <constraint firstItem="P9d-xA-dRw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="51" id="Mbx-JV-bs0"/>
-                            <constraint firstItem="cEI-RI-dFj" firstAttribute="top" secondItem="ddE-lx-ElV" secondAttribute="bottom" constant="50" id="Sra-rD-44T"/>
-                            <constraint firstItem="06U-xY-ptO" firstAttribute="top" secondItem="cEI-RI-dFj" secondAttribute="bottom" constant="50" id="VHV-O9-VnN"/>
-                            <constraint firstItem="ddE-lx-ElV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XWH-OP-t1S"/>
-                            <constraint firstItem="ddE-lx-ElV" firstAttribute="top" secondItem="P9d-xA-dRw" secondAttribute="bottom" constant="50" id="jdC-nj-9EB"/>
-                            <constraint firstItem="Yhe-un-Wrq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ktX-5m-ZVa"/>
-                            <constraint firstItem="P9d-xA-dRw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lD0-Co-bd1"/>
-                            <constraint firstItem="cEI-RI-dFj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m5b-UU-Qcl"/>
+                            <constraint firstItem="cEI-RI-dFj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SOb-s1-cCc"/>
+                            <constraint firstItem="cEI-RI-dFj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Sem-Q7-EGl"/>
+                            <constraint firstItem="ddE-lx-ElV" firstAttribute="centerY" secondItem="P9d-xA-dRw" secondAttribute="centerY" id="Sih-h1-RUz"/>
+                            <constraint firstItem="06U-xY-ptO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Zt5-mv-aIz"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yhe-un-Wrq" secondAttribute="bottom" constant="20" id="ca7-TC-Zq3"/>
+                            <constraint firstItem="06U-xY-ptO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hBf-C9-z5L"/>
+                            <constraint firstItem="P9d-xA-dRw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="lNb-36-HWa"/>
                             <constraint firstAttribute="bottomMargin" secondItem="JRS-iK-msS" secondAttribute="bottom" constant="-10" id="oyN-ef-dfz"/>
-                            <constraint firstItem="Yhe-un-Wrq" firstAttribute="top" secondItem="06U-xY-ptO" secondAttribute="bottom" constant="50" id="sXV-Be-ZB0"/>
                             <constraint firstItem="JRS-iK-msS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-27" id="wLh-gl-jOv"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4cM-8T-qHO"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <segue destination="D5N-Jb-9cf" kind="show" identifier="newDiary" id="F8i-Mc-Ihz"/>
@@ -298,39 +291,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 2" translatesAutoresizingMaskIntoConstraints="NO" id="pOW-aU-FJi">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting2.png" translatesAutoresizingMaskIntoConstraints="NO" id="pOW-aU-FJi">
                                 <rect key="frame" x="-14" y="-11" width="630" height="621"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvw-Rs-IR4">
                                 <rect key="frame" x="175" y="170" width="250" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="6Eh-x9-qb8"/>
                                     <constraint firstAttribute="height" constant="40" id="gIQ-VF-zfg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="備份至DropBox" backgroundImage="Rectangle 1">
+                                <state key="normal" title="備份至DropBox">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diq-C5-oIG">
                                 <rect key="frame" x="175" y="260" width="250" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="8OK-ZY-b0S"/>
                                     <constraint firstAttribute="width" constant="250" id="Gen-yN-w3x"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="聯絡我們" backgroundImage="Rectangle 1">
+                                <state key="normal" title="聯絡我們">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pt2-pI-6jG">
                                 <rect key="frame" x="175" y="350" width="250" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="ZOD-Of-bTF"/>
                                     <constraint firstAttribute="height" constant="40" id="jIO-vf-hIB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="給予評分" backgroundImage="Rectangle 1">
+                                <state key="normal" title="給予評分">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -346,12 +342,13 @@
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iij-m4-sZu">
                                 <rect key="frame" x="175" y="440" width="250" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="Z1F-Qf-WS2"/>
                                     <constraint firstAttribute="height" constant="40" id="d34-xJ-gsD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="返回首頁" backgroundImage="Rectangle 1">
+                                <state key="normal" title="返回首頁">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -382,7 +379,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ODE-j1-O15" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Wgo-4j-0qq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="21" y="1137"/>
+            <point key="canvasLocation" x="-775" y="1339"/>
         </scene>
         <!--Jump-->
         <scene sceneID="mdU-Um-Hkn">
@@ -429,7 +426,9 @@
     </scenes>
     <resources>
         <image name="Rectangle 1" width="187" height="40"/>
-        <image name="Rectangle 2" width="388" height="564"/>
+        <image name="browse.png" width="233" height="226"/>
         <image name="home.png" width="414" height="736"/>
+        <image name="pen.png" width="241" height="249"/>
+        <image name="setting2.png" width="414" height="736"/>
     </resources>
 </document>

@@ -74,10 +74,10 @@
     
     
     //    邊寬與圓角
-    _borderImageView.layer.borderWidth = 3.0f;
-    _imgTitleLable.layer.cornerRadius = 6.0f;
-    _borderImageView.layer.cornerRadius = 6.0f;
-    _imageView.layer.cornerRadius = 6.0f;
+    _borderImageView.layer.borderWidth = 2;
+    _imgTitleLable.layer.cornerRadius = 3;
+    _borderImageView.layer.cornerRadius = 3;
+    _imageView.layer.cornerRadius = 3;
     
     
     
@@ -109,6 +109,7 @@
 {
 
     dayView.hidden = NO;
+    [dayView.textLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16]];
     
     // Hide if from another month
     if([dayView isFromAnotherMonth]){

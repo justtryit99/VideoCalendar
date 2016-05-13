@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface ImageBrowser : NSObject
+
++(void) showImage:(UIImageView*)imageView;
 
 @end
