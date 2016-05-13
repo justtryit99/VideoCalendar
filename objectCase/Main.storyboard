@@ -22,13 +22,13 @@
                                 <color key="backgroundColor" red="0.56633401279999995" green="0.83155769390000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9d-xA-dRw">
-                                <rect key="frame" x="20" y="40" width="150" height="150"/>
+                                <rect key="frame" x="20" y="50" width="140" height="140"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="ZtK-6R-KZH"/>
-                                    <constraint firstAttribute="height" constant="150" id="bPy-0g-yMX"/>
+                                    <constraint firstAttribute="width" constant="140" id="ZtK-6R-KZH"/>
+                                    <constraint firstAttribute="height" constant="140" id="bPy-0g-yMX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" backgroundImage="browse.png">
+                                <state key="normal" backgroundImage="browse2.png">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -36,10 +36,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddE-lx-ElV">
-                                <rect key="frame" x="430" y="40" width="150" height="150"/>
+                                <rect key="frame" x="440" y="50" width="140" height="140"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="NM1-nM-0tV"/>
-                                    <constraint firstAttribute="height" constant="150" id="jZ5-ja-svx"/>
+                                    <constraint firstAttribute="width" constant="140" id="NM1-nM-0tV"/>
+                                    <constraint firstAttribute="height" constant="140" id="jZ5-ja-svx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" backgroundImage="pen.png">
@@ -50,9 +50,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yhe-un-Wrq">
-                                <rect key="frame" x="207" y="540" width="187" height="40"/>
+                                <rect key="frame" x="230" y="440" width="140" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="a6y-dJ-6bA"/>
+                                    <constraint firstAttribute="height" constant="140" id="exT-SM-oGy"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="設定" backgroundImage="Rectangle 1">
+                                <state key="normal" backgroundImage="tool.png">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -60,9 +64,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06U-xY-ptO">
-                                <rect key="frame" x="20" y="280" width="187" height="40"/>
+                                <rect key="frame" x="20" y="240" width="140" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="5zk-0k-P5y"/>
+                                    <constraint firstAttribute="width" constant="140" id="CD1-Rd-PX8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="我的影片" backgroundImage="Rectangle 1">
+                                <state key="normal" backgroundImage="myVideo.png">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -70,11 +78,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEI-RI-dFj">
-                                <rect key="frame" x="393" y="280" width="187" height="40"/>
+                                <rect key="frame" x="440" y="230" width="140" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="9fv-c6-CeW"/>
+                                    <constraint firstAttribute="width" constant="140" id="bRd-Ml-ad8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                <state key="normal" title="製作影片" backgroundImage="Rectangle 1">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" backgroundImage="action.png"/>
                                 <connections>
                                     <segue destination="JXK-Xb-tbv" kind="show" id="Ysg-O5-qBC"/>
                                 </connections>
@@ -93,8 +103,8 @@
                             <constraint firstItem="ddE-lx-ElV" firstAttribute="centerY" secondItem="P9d-xA-dRw" secondAttribute="centerY" id="Sih-h1-RUz"/>
                             <constraint firstItem="06U-xY-ptO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Zt5-mv-aIz"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yhe-un-Wrq" secondAttribute="bottom" constant="20" id="ca7-TC-Zq3"/>
-                            <constraint firstItem="06U-xY-ptO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hBf-C9-z5L"/>
-                            <constraint firstItem="P9d-xA-dRw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="lNb-36-HWa"/>
+                            <constraint firstItem="06U-xY-ptO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="10" id="hBf-C9-z5L"/>
+                            <constraint firstItem="P9d-xA-dRw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="lNb-36-HWa"/>
                             <constraint firstAttribute="bottomMargin" secondItem="JRS-iK-msS" secondAttribute="bottom" constant="-10" id="oyN-ef-dfz"/>
                             <constraint firstItem="JRS-iK-msS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-27" id="wLh-gl-jOv"/>
                         </constraints>
@@ -425,10 +435,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Rectangle 1" width="187" height="40"/>
-        <image name="browse.png" width="233" height="226"/>
+        <image name="action.png" width="241" height="249"/>
+        <image name="browse2.png" width="241" height="249"/>
         <image name="home.png" width="414" height="736"/>
+        <image name="myVideo.png" width="241" height="249"/>
         <image name="pen.png" width="241" height="249"/>
         <image name="setting2.png" width="414" height="736"/>
+        <image name="tool.png" width="241" height="249"/>
     </resources>
 </document>
