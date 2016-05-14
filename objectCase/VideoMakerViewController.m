@@ -525,6 +525,7 @@
 
 - (IBAction)saveBtnPressed:(id)sender {
     [self testCompressionSession];
+    NSLog(@"saved");
 }
 
 - (void)effect1 {
