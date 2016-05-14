@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08E09E2B1CE74B4A005D4126 /* effect.png in Resources */ = {isa = PBXBuildFile; fileRef = 08E09E291CE74B4A005D4126 /* effect.png */; };
+		08E09E2C1CE74B4A005D4126 /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = 08E09E2A1CE74B4A005D4126 /* music.png */; };
 		3C04F13A1CE1CD54006374A1 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C04F12E1CE1CD54006374A1 /* image.jpg */; };
 		3C04F13B1CE1CD54006374A1 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C04F12F1CE1CD54006374A1 /* photo.png */; };
 		3C04F13C1CE1CD54006374A1 /* OneDayData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C04F1311CE1CD54006374A1 /* OneDayData.m */; };
@@ -81,6 +83,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		08E09E291CE74B4A005D4126 /* effect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = effect.png; sourceTree = "<group>"; };
+		08E09E2A1CE74B4A005D4126 /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music.png; sourceTree = "<group>"; };
 		1D98124CA5EAFD37421EFB5C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2D124FD1C54A190BCA81FF78 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C04F12E1CE1CD54006374A1 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				3C04F14B1CE1D57C006374A1 /* selected.png */,
 				3C04F14C1CE1D57C006374A1 /* selected@3x.png */,
 				3C04F14D1CE1D57C006374A1 /* selected@2x.png */,
+				08E09E291CE74B4A005D4126 /* effect.png */,
+				08E09E2A1CE74B4A005D4126 /* music.png */,
 				3C04F14E1CE1D57C006374A1 /* VideoStoryboard.storyboard */,
 				3C04F14F1CE1D57C006374A1 /* TimeRangeTableViewController.h */,
 				3C04F1501CE1D57C006374A1 /* TimeRangeTableViewController.m */,
@@ -379,7 +385,7 @@
 				TargetAttributes = {
 					EB7D51911CB39985003B3BBB = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 48GQCAR3WV;
+						DevelopmentTeam = 5ZYQ4553WQ;
 					};
 				};
 			};
@@ -428,6 +434,7 @@
 				3C69424B1CE5AF2C008DF05A /* say.png in Resources */,
 				3C04F13A1CE1CD54006374A1 /* image.jpg in Resources */,
 				EB7D51A21CB39985003B3BBB /* Assets.xcassets in Resources */,
+				08E09E2B1CE74B4A005D4126 /* effect.png in Resources */,
 				EB78AD9C1CE5DFD7000DBA2A /* playorpause.png in Resources */,
 				3C04F13B1CE1CD54006374A1 /* photo.png in Resources */,
 				3C04F1401CE1CD54006374A1 /* Jump.storyboard in Resources */,
@@ -438,6 +445,7 @@
 				3C69425B1CE5C784008DF05A /* pen.png in Resources */,
 				3C04F15A1CE1D57C006374A1 /* selected@2x.png in Resources */,
 				3C6942551CE5BB40008DF05A /* setting2.png in Resources */,
+				08E09E2C1CE74B4A005D4126 /* music.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

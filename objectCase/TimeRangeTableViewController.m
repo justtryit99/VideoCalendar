@@ -48,6 +48,14 @@ static NSString *kOtherCell = @"otherCell";     // the remaining cells at the en
 {
     [super viewDidLoad];
     
+    
+    UINavigationBar *bar = [self.navigationController navigationBar];
+    [bar setTintColor:[UIColor whiteColor]];
+    [bar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    [bar setBarTintColor:[UIColor blackColor]];
+    
+    
+    
     // setup our data source
     NSMutableDictionary *itemOne = [@{ kTitleKey : @"選擇日期區間:" } mutableCopy];
     NSMutableDictionary *itemTwo = [@{ kTitleKey : @"開始日期",
