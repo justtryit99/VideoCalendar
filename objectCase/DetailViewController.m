@@ -21,7 +21,6 @@
     //id timeObsever;
 }
 @property (nonatomic,strong) AVPlayer *player;
-@property (weak, nonatomic) IBOutlet UIButton *playOPauseBtnPressed;
 @property (weak, nonatomic) IBOutlet UISlider *AVSlider;
 @property (weak, nonatomic) IBOutlet UIImageView *playImageView;
 
@@ -35,12 +34,17 @@
     [super viewDidLoad];
     self.playImageView.hidden = true;
     
+//    UITapGestureRecognizer *touch  = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchImageView)];
+//    [self.playImageView setUserInteractionEnabled:YES];
+//    [self.playImageView addGestureRecognizer:touch];
+//    
 }
 -(void)dealloc{
     //remove聆聽
     [self removeObserverFromPlayerItem:self.player.currentItem];
     [self removeNotification];
-    
+  
+  
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -74,7 +78,11 @@
 -(void)setupUI{
     //播放器Layer
     playerLayer=[AVPlayerLayer playerLayerWithPlayer:self.player];
-    playerLayer.frame=self.AVMovieImage.frame;
+    playerLayer.frame=self.AVMovieImage.bounds;
+    playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+    playerLayer.needsDisplayOnBoundsChange = YES;
+//    _AVMovieImage.translatesAutoresizingMaskIntoConstraints = false;
+  
     [self.AVMovieImage.layer addSublayer:playerLayer];
 }
 -(AVPlayer *)player{
@@ -185,8 +193,8 @@
 }
 
 #pragma mark - play or pause
-- (IBAction)playOrPauseClick:(id)sender {
-   
+- (IBAction)touchImageView:(id)sender {
+    
     if(self.player.rate==0){ //如果是暫停 就播放
         [self.player play];
         self.playImageView.hidden = true;
@@ -194,10 +202,9 @@
         [self.player pause];
         self.playImageView.hidden = false;
     }
-    
-
-
 }
+
+
 
 #pragma mark - Delete movie
 - (IBAction)deleteBtnPressed:(id)sender {
