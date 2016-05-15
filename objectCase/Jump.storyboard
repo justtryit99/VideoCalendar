@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -30,8 +29,8 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YBH-vl-dk3" customClass="JTVerticalCalendarView">
-                                <rect key="frame" x="0.0" y="100" width="600" height="324"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YBH-vl-dk3" customClass="JTVerticalCalendarView">
+                                <rect key="frame" x="0.0" y="100" width="600" height="322"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="280" id="2Qv-SB-QIg"/>
                                 </constraints>
@@ -71,22 +70,23 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoY-YU-3jU">
-                                <rect key="frame" x="239" y="424" width="40" height="41"/>
+                                <rect key="frame" x="232" y="424" width="40" height="41"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                 <color key="textColor" red="1" green="0.1025861391" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星期日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVp-aG-2xG">
-                                <rect key="frame" x="304" y="442" width="48" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="星期日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVp-aG-2xG">
+                                <rect key="frame" x="296" y="442" width="57" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="u4d-9U-gyN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/4/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVy-tx-Nha">
-                                <rect key="frame" x="289" y="422" width="78" height="20"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <rect key="frame" x="282" y="422" width="84" height="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kWl-ZT-IgJ">
@@ -179,7 +179,7 @@
                             <constraint firstItem="saf-GT-ACg" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="enY-j8-FyK"/>
                             <constraint firstItem="8cy-7T-fhG" firstAttribute="centerY" secondItem="aOQ-3a-mPn" secondAttribute="centerY" id="ewg-hI-rRM"/>
                             <constraint firstItem="hbS-xC-Dkb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gdz-c0-RfJ"/>
-                            <constraint firstItem="HoY-YU-3jU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-41" id="hjK-sX-aiF"/>
+                            <constraint firstItem="HoY-YU-3jU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-48" id="hjK-sX-aiF"/>
                             <constraint firstItem="9jz-Rn-Ivx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="iFD-NJ-KM5"/>
                             <constraint firstItem="xVy-tx-Nha" firstAttribute="top" secondItem="rSs-pu-GEi" secondAttribute="bottom" id="mON-gN-wnW"/>
                             <constraint firstItem="rSs-pu-GEi" firstAttribute="top" secondItem="aOQ-3a-mPn" secondAttribute="bottom" id="mc5-9c-T6w"/>
@@ -310,9 +310,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zua-pP-Yd4">
                                 <rect key="frame" x="520" y="544" width="40" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <state key="normal" title="刪除">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="0.1025861391" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="deleteBtnPressed:" destination="Cot-nL-m5g" eventType="touchUpInside" id="azH-4x-tlO"/>

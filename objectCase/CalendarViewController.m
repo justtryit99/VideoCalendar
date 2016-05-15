@@ -109,7 +109,7 @@
 {
 
     dayView.hidden = NO;
-    [dayView.textLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16]];
+    [dayView.textLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:20]];
     
     // Hide if from another month
     if([dayView isFromAnotherMonth]){
@@ -144,12 +144,6 @@
     }
     
     
-//    if([self haveEventForDay:dayView.date]){
-//        dayView.dotView.hidden = NO;
-//    }
-//    else{
-//        dayView.dotView.hidden = YES;
-//    }
     
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.timeZone = [NSTimeZone localTimeZone];

@@ -60,10 +60,7 @@
         _imageView.image = [UIImage imageWithContentsOfFile:photoPath];;
         
         _deleteBtn.hidden = false;
-        
-        
 
-        
     }
     
 //        增加imageView觸碰手勢
@@ -276,8 +273,10 @@
         
         self.view.frame = CGRectMake(0, viewY - tvY + 40, self.view.frame.size.width, self.view.frame.size.height);
         
+//        如果要更改frame需要打下面這行
 //        _deleteBtn.translatesAutoresizingMaskIntoConstraints = false;
 
+//        拉layout的距離，來設定
         deleteLayout.constant = 50;
 
         
