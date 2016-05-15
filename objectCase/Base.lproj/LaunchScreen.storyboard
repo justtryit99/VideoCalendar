@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,7 +16,25 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firstBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="zA7-KY-WJI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firstImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kqv-tc-Eu6">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="zA7-KY-WJI" secondAttribute="bottom" id="8i7-5m-iBV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zA7-KY-WJI" secondAttribute="trailing" constant="-20" id="8wt-Ju-YiQ"/>
+                            <constraint firstItem="Kqv-tc-Eu6" firstAttribute="centerX" secondItem="zA7-KY-WJI" secondAttribute="centerX" id="Inb-Qe-tjl"/>
+                            <constraint firstItem="zA7-KY-WJI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="Mcf-Ri-CpM"/>
+                            <constraint firstItem="Kqv-tc-Eu6" firstAttribute="height" secondItem="zA7-KY-WJI" secondAttribute="height" id="Q7P-13-w3v"/>
+                            <constraint firstItem="Kqv-tc-Eu6" firstAttribute="width" secondItem="zA7-KY-WJI" secondAttribute="width" id="W2C-VN-goI"/>
+                            <constraint firstItem="zA7-KY-WJI" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="hxW-Mw-JTh"/>
+                            <constraint firstItem="Kqv-tc-Eu6" firstAttribute="centerY" secondItem="zA7-KY-WJI" secondAttribute="centerY" id="w07-TO-TET"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +42,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="firstBG.png" width="1024" height="1024"/>
+        <image name="firstImage.png" width="1024" height="1024"/>
+    </resources>
 </document>

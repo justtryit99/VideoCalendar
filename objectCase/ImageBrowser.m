@@ -17,12 +17,22 @@ static CGRect oldframe;
     UIImage *image = oldImageView.image;
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIView *backgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-    oldframe=[oldImageView convertRect:oldImageView.bounds toView:window];
-    backgroundView.backgroundColor=[UIColor blackColor];
-    backgroundView.alpha=0;
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:backgroundView.frame];
+    scrollView.contentSize = backgroundView.frame.size;
+    scrollView.maximumZoomScale = 5.0;
+    scrollView.minimumZoomScale = 1.0;
+    scrollView.zoomScale = 1.0;
+    
+    
+    oldframe = [oldImageView convertRect:oldImageView.bounds toView:window];
+    backgroundView.backgroundColor=[UIColor whiteColor];
+    backgroundView.alpha = 0.1; //沒反應？
     UIImageView *imageView=[[UIImageView alloc]initWithFrame:oldframe];
     imageView.image=image;
     imageView.tag=1;
+    
+    
     [backgroundView addSubview:imageView];
     [window addSubview:backgroundView];
     
@@ -30,7 +40,11 @@ static CGRect oldframe;
     [backgroundView addGestureRecognizer: tap];
     
     [UIView animateWithDuration:0.3 animations:^{
-        imageView.frame=CGRectMake(0,([UIScreen mainScreen].bounds.size.height-image.size.height*[UIScreen mainScreen].bounds.size.width/image.size.width)/2, [UIScreen mainScreen].bounds.size.width, image.size.height*[UIScreen mainScreen].bounds.size.width/image.size.width);
+        imageView.frame=CGRectMake(0,
+                                   ([UIScreen mainScreen].bounds.size.height -
+                                    image.size.height*[UIScreen mainScreen].bounds.size.width/image.size.width)/2,
+                                   [UIScreen mainScreen].bounds.size.width,
+                                   image.size.height*[UIScreen mainScreen].bounds.size.width/image.size.width);
         backgroundView.alpha=1;
     } completion:^(BOOL finished) {
         
