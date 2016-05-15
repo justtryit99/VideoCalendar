@@ -58,6 +58,16 @@ static NSString * const reuseIdentifier = @"SelectImageCollectionViewCell";
             }
         }
     }
+    
+    if (_imageURLArray.count == 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"錯誤" message:@"所選的時間範圍內沒有照片" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:true];
+        }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:true completion:nil];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -197,6 +207,7 @@ static NSString * const reuseIdentifier = @"SelectImageCollectionViewCell";
     return resultImage;
 }
 
+/*
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"gotoMakeMovie"]){
         NSMutableArray *imageArr = [[NSMutableArray alloc] init];
@@ -209,8 +220,31 @@ static NSString * const reuseIdentifier = @"SelectImageCollectionViewCell";
         vc.imageArray  = imageArr;
     }
 }
+*/
 
 
+- (IBAction)okBtnPressed:(id)sender {
+    NSMutableArray *imageArr = [[NSMutableArray alloc] init];
+    VideoMakerViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"VideoMakerViewController"];
+    for (int i=0; i<_imageSelected.count; i++) {
+        if ([_imageSelected[i]  isEqual: @(true)]) {
+            [imageArr addObject:self.imageURLArray[i]];
+        }
+    }
+    
+    if (imageArr.count == 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"錯誤" message:@"請至少選擇一張相片" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            return;
+        }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:true completion:nil];
+    }
+    
+    vc.imageArray  = imageArr;
+    [self showViewController:vc sender:nil];
+    
+}
 
 
 
