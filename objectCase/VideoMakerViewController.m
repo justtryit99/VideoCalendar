@@ -32,7 +32,8 @@
     //    NSMutableArray *imageWithEffects;
     UIScrollView *effectSelect;
     UIScrollView *musicSelect;
-    
+    AVAudioPlayer *musicPlayer;
+
 }
 
 
@@ -44,6 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self music1];
     photoCount = 0;
     photoFrame = 0;
     effectType = 1;
@@ -426,6 +428,9 @@
             } else {
                 photoFrame = 0;
                 photoCount = 0;
+                [musicPlayer pause];
+                musicPlayer.currentTime = 0.0;
+                [musicPlayer play];
             }
             break;
         }
@@ -444,6 +449,9 @@
             } else {
                 photoFrame = 0;
                 photoCount = 0;
+                [musicPlayer pause];
+                musicPlayer.currentTime = 0.0;
+                [musicPlayer play];
             }
             break;
         }
@@ -473,6 +481,9 @@
             } else {
                 photoFrame = 0;
                 photoCount = 0;
+                [musicPlayer pause];
+                musicPlayer.currentTime = 0.0;
+                [musicPlayer play];
             }
             break;
         }
@@ -532,18 +543,27 @@
     effectType = 1;
     photoCount = 0;
     photoFrame = 0;
+    [musicPlayer pause];
+    musicPlayer.currentTime = 0.0;
+    [musicPlayer play];
 }
 
 - (void)effect2 {
     effectType = 2;
     photoCount = 0;
     photoFrame = 0;
+    [musicPlayer pause];
+    musicPlayer.currentTime = 0.0;
+    [musicPlayer play];
 }
 
 - (void)effect3 {
     effectType = 3;
     photoCount = 0;
     photoFrame = 0;
+    [musicPlayer pause];
+    musicPlayer.currentTime = 0.0;
+    [musicPlayer play];
 }
 
 - (void)musicMode {
@@ -557,8 +577,19 @@
 }
 
 - (void)music1 {
-    
-    
+    if (musicPlayer.playing == true) {
+        [musicPlayer stop];
+        NSLog(@"Stop Music");
+    } else {
+        NSURL *url = [[NSBundle mainBundle] URLForResource:@"Animals.mp3" withExtension:nil];
+        musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+        musicPlayer.numberOfLoops = -1;
+        [musicPlayer prepareToPlay];
+        [musicPlayer play];
+        photoFrame = 0;
+        photoCount = 0;
+    }
+
 }
 
 

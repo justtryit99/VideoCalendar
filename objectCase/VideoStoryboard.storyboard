@@ -61,7 +61,7 @@
                     <navigationItem key="navigationItem" title="選擇照片" id="5Sh-zM-GXK">
                         <barButtonItem key="rightBarButtonItem" title="OK" id="Q1i-NW-sQe">
                             <connections>
-                                <segue destination="c7Z-9h-R4l" kind="show" identifier="gotoMakeMovie" id="IEg-Cb-vvw"/>
+                                <action selector="okBtnPressed:" destination="hRw-Qz-Joj" id="GKs-IT-Q6Q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -73,7 +73,7 @@
         <!--風格-->
         <scene sceneID="yru-f0-GuY">
             <objects>
-                <viewController id="c7Z-9h-R4l" customClass="VideoMakerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoMakerViewController" id="c7Z-9h-R4l" customClass="VideoMakerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4EB-G6-goP"/>
                         <viewControllerLayoutGuide type="bottom" id="Lh9-67-cFl"/>
